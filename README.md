@@ -1,24 +1,52 @@
 # LogiOps AI
 
-**AI-assisted logistics incident analysis** · Python · Streamlit · Gemini
+**AI-assisted logistics incident analysis · Python · Streamlit · Gemini**
 
-Protótipo independente que transforma relatos de ocorrências logísticas em avaliações estruturadas e sugestões de ações, mantendo a validação com o profissional responsável.
+[![CI](https://github.com/natgeo1997/logiops-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/natgeo1997/logiops-ai/actions/workflows/ci.yml)
 
-## Funcionalidades
+## Problem and approach
 
-- Interface Streamlit para registrar e analisar ocorrências
-- **Ver um exemplo**: demonstração com cenário fictício, sem consumir API
-- **Analisar uma ocorrência**: análise com Gemini via `google-genai`
-- Avaliação de prioridade (`Critical`, `High`, `Medium` ou `Low`)
-- Impacto operacional, possíveis causas, ações recomendadas e preventivas
-- Sugestão de comunicação para revisão humana
-- Resposta JSON validada com Pydantic
-- Exportação dos resultados em JSON e TXT
-- Tratamento de erros de API
+An incident report can leave an operations team with scattered information and unclear next steps. This independent prototype organizes a report into a structured initial assessment for a logistics professional to check and act on.
 
-## Executar localmente
+## Features
 
-Requisitos: Python 3.10+.
+- Priority suggestion: Critical / High / Medium / Low, displayed as P1–P4.
+- Operational impact and possible causes to verify.
+- Recommended and preventive actions.
+- Draft communication for review before sending.
+- Gemini structured JSON output validated with Pydantic.
+- JSON analysis export and TXT message export.
+- Controlled API error messages.
+- A predefined fictional example that runs without calling Gemini.
+
+## Demonstration — no installation required
+
+[Watch the recorded demonstration](logiops-ai-linkedin.mp4). GitHub may offer the file for download instead of inline playback.
+
+The recording uses a fictional logistics scenario. It is a demonstration of the application, not evidence of production deployment or measured operational gains. There is no hosted interactive demo linked here.
+
+## Architecture and decisions
+
+```mermaid
+flowchart LR
+    A[Incident report in Streamlit] --> B[Gemini API]
+    B --> C[Pydantic schema validation]
+    C --> D[Assessment and draft message]
+    D --> E[Human review]
+    D --> F[JSON / TXT export]
+    G[Predefined fictional example] --> D
+```
+
+- **Structured output:** a Pydantic model defines allowed priorities and required nonempty fields and action lists. This validates structure, not factual accuracy.
+- **Prompt instructions:** distinguish reported facts from hypotheses, avoid invented facts and request missing information. Compliance still requires review.
+- **Human control:** the application does not execute actions or send messages. Draft messages and recommendations remain subject to professional judgment.
+- **Rendering:** generated text is HTML-escaped before insertion into the assessment layout.
+- **Failures:** empty or invalid responses, timeouts and API failures produce controlled diagnostics without showing raw provider errors.
+- **Example mode:** uses a fixed fictional assessment, not a fresh model response. It is useful for exploring the interface without API access.
+
+## Run locally
+
+Requirements: Python 3.10+ (CI uses 3.11).
 
 ```bash
 python3 -m venv .venv
@@ -28,34 +56,23 @@ cp .env.example .env
 python -m streamlit run app.py
 ```
 
-Abra [http://localhost:8501](http://localhost:8501).
+Open [http://localhost:8501](http://localhost:8501).
 
-Para testar sem chave, selecione **Ver um exemplo** e clique em **Ver análise do exemplo**. Para a análise real, configure `GEMINI_API_KEY` em `.env` ou nos segredos da hospedagem, reinicie a aplicação e selecione **Analisar uma ocorrência** e clique em **Analisar ocorrência**. Nunca envie `.env` ao repositório.
+**Without a key:** select **Ver um exemplo**, then **Ver análise do exemplo**.
 
-## Vídeo de demonstração
+**With Gemini:** set `GEMINI_API_KEY` in `.env` or Streamlit secrets, restart the app, select **Analisar uma ocorrência**, enter a report and click **Analisar ocorrência**. The report is sent to Gemini. The optional `GEMINI_MODEL` setting selects the model. Never commit `.env` or real keys.
 
-[**Assistir à demonstração do LogiOps AI**](logiops-ai-linkedin.mp4)
+## Tests and continuous integration
 
-O vídeo mostra um cenário fictício da aplicação, com análise e organização de uma ocorrência logística.
-
-## Arquitetura
-
-```text
-Relato da ocorrência
-       ↓
-Streamlit / Python
-       ↓
-Gemini (saída estruturada JSON)
-       ↓
-Validação com Pydantic
-       ↓
-Cards de análise e exportação JSON/TXT
-       ↓
-Revisão humana
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
 ```
 
-## Limitações
+[CI](https://github.com/natgeo1997/logiops-ai/actions) runs tests on pushes and pull requests. The suite checks schema validation, provider request configuration, invalid responses, escaped report content, controlled diagnostics and the Streamlit example flow. Provider calls are mocked; no real key or paid call is needed.
 
-Protótipo demonstrativo; não há autenticação, banco de dados, envio automático de mensagens ou execução automática de ações. Hipóteses e recomendações da IA exigem revisão humana. Utilize somente dados fictícios ou autorizados.
+These tests verify software behavior. They do not measure the factual quality of Gemini recommendations, classification accuracy or business impact.
 
-**Tecnologias:** Python, Streamlit, Gemini API (`google-genai`), Pydantic e CSS.
+## Current limitations
+
+Demonstration prototype with no authentication, persistent database, automatic messaging or automatic execution of actions. Assessments are preliminary and can be wrong. Only use fictional or authorized reports. A measured model-quality benchmark and production deployment remain future work.

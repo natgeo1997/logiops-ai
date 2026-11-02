@@ -1,0 +1,32 @@
+name: Evaluate Gemini (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Gemini model ID
+        required: true
+        default: gemini-2.5-flash
+        type: string
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Evaluate twelve fictional cases
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ inputs.model }}
+        run: python evaluation/run.py --live --output evaluation/results/live
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gemini-evaluation
+          path: evaluation/results/live/
+          retention-days: 14

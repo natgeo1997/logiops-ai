@@ -23,7 +23,11 @@ An incident report can leave an operations team with scattered information and u
 
 [Watch the recorded demonstration](logiops-ai-linkedin.mp4). GitHub may offer the file for download instead of inline playback.
 
-The recording uses a fictional logistics scenario. It is a demonstration of the application, not evidence of production deployment or measured operational gains. There is no hosted interactive demo linked here.
+[**Explore the interactive browser example →**](https://natalia-practical-ai-demos.natygeo.chatgpt.site/logiops/index.html)
+
+The browser walkthrough uses the original app's fixed fictional example. It lets visitors inspect the assessment, edit the draft message and export JSON/TXT without installation. It is a static adaptation, not the hosted Streamlit application, and cannot analyze new reports.
+
+The recording uses a fictional logistics scenario. It is a demonstration of the application, not evidence of production deployment or measured operational gains. The local Streamlit application provides live Gemini analysis when a key is configured.
 
 ## Architecture and decisions
 
@@ -73,6 +77,10 @@ python -m pytest -q
 
 These tests verify software behavior. They do not measure the factual quality of Gemini recommendations, classification accuracy or business impact.
 
+## Model evaluation
+
+The [evaluation protocol](evaluation/README.md) includes twelve fictional priority cases, a constant-priority baseline, a live Gemini runner and a human-review rubric. The measured constant-Medium baseline is 25% on this balanced fixture; this is not a Gemini result. Live evaluation requires a Gemini key. Ordinary CI makes no model calls.
+
 ## Current limitations
 
-Demonstration prototype with no authentication, persistent database, automatic messaging or automatic execution of actions. Assessments are preliminary and can be wrong. Only use fictional or authorized reports. A measured model-quality benchmark and production deployment remain future work.
+Demonstration prototype with no authentication, persistent database, automatic messaging or automatic execution of actions. Assessments are preliminary and can be wrong. Only use fictional or authorized reports. A reviewed live-model evaluation and deployment of the full Streamlit service remain future work.

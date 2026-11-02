@@ -32,9 +32,11 @@ Abra [http://localhost:8501](http://localhost:8501).
 
 Para testar sem chave, selecione **Ver um exemplo** e clique em **Ver análise do exemplo**. Para a análise real, configure `GEMINI_API_KEY` em `.env` ou nos segredos da hospedagem, reinicie a aplicação e selecione **Analisar uma ocorrência** e clique em **Analisar ocorrência**. Nunca envie `.env` ao repositório.
 
-## Demonstração em vídeo
+## Vídeo de demonstração
 
-O vídeo de demonstração do projeto está disponível para inclusão no repositório como `demo/logiops-ai-demo.mp4`. O GitHub permite oferecer o arquivo para visualização ou download por um link no README depois do envio.
+[**Assistir à demonstração do LogiOps AI**](logiops-ai-linkedin.mp4)
+
+O vídeo mostra um cenário fictício da aplicação, com análise e organização de uma ocorrência logística.
 
 ## Arquitetura
 

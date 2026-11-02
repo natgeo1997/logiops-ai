@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+:root{--papel:#F2EFE6;--carvao:#16181A;--laranja:#FF5A1F;--cinza:#8A8D8F;--verde:#2F6B4F;--linha:#c3c2ba}
+*{box-sizing:border-box}body,.stApp{background:var(--papel);color:var(--carvao);font-family:'IBM Plex Sans',sans-serif}
+[data-testid="stHeader"],[data-testid="stToolbar"],#MainMenu,footer{display:none}
+.block-container{max-width:1120px;padding:2.8rem 2.5rem 4rem}
+.cabecalho{display:flex;align-items:center;justify-content:space-between;border-top:5px solid var(--carvao);border-bottom:1px solid var(--carvao);padding:21px 0}
+.logo{display:flex;align-items:center;gap:12px}.wordmark{font:800 38px/.95 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:-1px}.ai{font:500 15px 'IBM Plex Mono',monospace;border:1px solid var(--carvao);padding:4px 6px;align-self:flex-end}
+.mira{position:relative;width:31px;height:31px;background:linear-gradient(var(--carvao),var(--carvao)) left top/10px 2px no-repeat,linear-gradient(var(--carvao),var(--carvao)) left top/2px 10px no-repeat,linear-gradient(var(--carvao),var(--carvao)) right top/10px 2px no-repeat,linear-gradient(var(--carvao),var(--carvao)) right top/2px 10px no-repeat,linear-gradient(var(--carvao),var(--carvao)) left bottom/10px 2px no-repeat,linear-gradient(var(--carvao),var(--carvao)) left bottom/2px 10px no-repeat,linear-gradient(var(--carvao),var(--carvao)) right bottom/10px 2px no-repeat,linear-gradient(var(--carvao),var(--carvao)) right bottom/2px 10px no-repeat}.mira i{position:absolute;width:8px;height:8px;background:var(--laranja);border-radius:50%;top:12px;left:12px}
+.micro{font:400 10px/1.7 'IBM Plex Mono',monospace;letter-spacing:1px}.cabecalho>.micro{text-align:right}
+.abertura{padding:39px 0 22px}.abertura>.micro:before{content:'';display:inline-block;width:9px;height:9px;background:var(--laranja);margin-right:9px}
+.abertura h1{font:700 64px/.98 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:-.6px;margin:17px 0;padding:0;color:var(--carvao)}
+.abertura p{font-size:15px;color:#525659;line-height:1.6;margin:0}
+[data-testid="stForm"]{border:1px solid var(--carvao);border-top:3px solid var(--carvao);border-radius:0;padding:22px;background:transparent}
+[data-testid="stTextArea"] textarea{background:#faf8f1!important;color:var(--carvao)!important;font:14px/1.7 'IBM Plex Sans',sans-serif;padding:14px;border-radius:0}
+[data-testid="stTextArea"] label p{font:500 12px 'IBM Plex Mono',monospace;text-transform:uppercase}
+.stButton button,.stDownloadButton button,[data-testid="stFormSubmitButton"] button{border-radius:0;min-height:43px;font-family:'IBM Plex Mono',monospace;box-shadow:none}
+button[kind="primaryFormSubmit"],button[kind="primary"]{background:var(--laranja);border:1px solid var(--carvao);color:var(--carvao)}
+button[kind="primaryFormSubmit"]:hover,button[kind="primary"]:hover{background:#e94c16;color:var(--carvao);border-color:var(--carvao)}
+.ficha{margin:34px 0 0;border:1px solid var(--carvao);border-top:5px solid var(--carvao)}
+.ficha-topo{display:flex;align-items:center;justify-content:space-between;padding:25px 27px;border-bottom:1px solid var(--carvao)}
+.ficha h2{font:600 38px/1.2 'Barlow Condensed','Arial Narrow',sans-serif;margin:6px 0;padding:0;letter-spacing:1px;color:var(--carvao)}
+.carimbo{font:600 16px/1.15 'Barlow Condensed',sans-serif;letter-spacing:2px;border:2px solid #555957;padding:8px 15px;transform:rotate(-6deg);text-align:center;color:#555957;margin-right:8px}
+.grade{display:grid;grid-template-columns:1fr 1fr}.campo{padding:24px 27px;border-bottom:1px solid var(--linha);min-width:0}.grade .campo:nth-child(odd){border-right:1px solid var(--linha)}
+.campo-titulo{display:flex;align-items:center;gap:11px;margin-bottom:16px}.campo-titulo>span{font:500 11px 'IBM Plex Mono',monospace;color:#616669}
+.campo h3{font:600 21px/1.1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.7px;margin:0;padding:0;color:var(--carvao)}
+.campo p,.campo li{font:400 14px/1.75 'IBM Plex Sans',sans-serif;margin:0;color:#353a3d;overflow-wrap:anywhere}.campo ol{margin:0;padding-left:19px}.campo li{padding-left:5px;margin-bottom:12px}.campo li:last-child{margin-bottom:0}.campo li::marker{font:500 11px 'IBM Plex Mono',monospace}
+.grade .acoes{grid-column:2;grid-row:2 / 4;border-left:1px solid var(--linha)}.grade .campo:nth-child(3){border-right:0}.grade .prevencao{border-bottom:0;border-right:0}.prevencao h3{color:var(--verde)}
+.tag{display:inline-block;padding:10px 15px;font:600 16px 'IBM Plex Mono',monospace;color:var(--carvao);border:2px solid var(--laranja)}
+.P1{background:var(--laranja);border-color:var(--carvao);border-bottom:8px solid transparent;border-image:none;position:relative}.P1:after{content:'';position:absolute;bottom:-8px;left:-2px;right:-2px;height:7px;background:repeating-linear-gradient(135deg,var(--carvao) 0 4px,var(--papel) 4px 8px)}
+.P2{background:repeating-linear-gradient(135deg,transparent 0 4px,#ff5a1f28 4px 5px);border-color:var(--laranja)}.P3{background:transparent}.P4{border-color:var(--cinza)}
+.campo p.nota{font-size:12px;color:#5c6264;margin-top:14px;max-width:290px}
+.canhoto{border-top:2px dashed var(--cinza);border-bottom:0;padding-top:25px}.canhoto .mensagem{margin-top:16px;white-space:normal}.canhoto .micro{color:#616669}
+.rodape{display:flex;justify-content:space-between;gap:15px;margin-top:32px;border-top:1px solid var(--carvao);padding-top:13px;font:400 9px/1.8 'IBM Plex Mono',monospace;letter-spacing:.7px}
+@media(max-width:640px){.block-container{padding:1.3rem 1rem}.cabecalho>.micro{display:none}.wordmark{font-size:32px}.abertura h1{font-size:45px}.grade{display:block}.grade .campo,.grade .acoes{border-left:0;border-right:0!important}.campo{padding:21px}.ficha-topo{padding:21px}.ficha h2{font-size:29px}.carimbo{font-size:13px;padding:7px}.rodape{flex-direction:column;gap:2px}}
+@media print{.tag{print-color-adjust:exact}.ficha{break-inside:auto}.campo{break-inside:avoid}}

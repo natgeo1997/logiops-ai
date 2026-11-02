@@ -7,8 +7,8 @@ Protótipo independente que transforma relatos de ocorrências logísticas em av
 ## Funcionalidades
 
 - Interface Streamlit para registrar e analisar ocorrências
-- **Demo scenario**: demonstração com cenário fictício, sem consumir API
-- **Live analysis**: análise com Gemini via `google-genai`
+- **Ver um exemplo**: demonstração com cenário fictício, sem consumir API
+- **Analisar uma ocorrência**: análise com Gemini via `google-genai`
 - Avaliação de prioridade (`Critical`, `High`, `Medium` ou `Low`)
 - Impacto operacional, possíveis causas, ações recomendadas e preventivas
 - Sugestão de comunicação para revisão humana
@@ -30,7 +30,11 @@ python -m streamlit run app.py
 
 Abra [http://localhost:8501](http://localhost:8501).
 
-Para testar sem chave, selecione **Demo scenario** e clique em **Analyze Incident**. Para a análise real, configure `GEMINI_API_KEY` em `.env` ou nos segredos da hospedagem, reinicie a aplicação e selecione **Live analysis**. Nunca envie `.env` ao repositório.
+Para testar sem chave, selecione **Ver um exemplo** e clique em **Ver análise do exemplo**. Para a análise real, configure `GEMINI_API_KEY` em `.env` ou nos segredos da hospedagem, reinicie a aplicação e selecione **Analisar uma ocorrência** e clique em **Analisar ocorrência**. Nunca envie `.env` ao repositório.
+
+## Demonstração em vídeo
+
+O vídeo de demonstração do projeto está disponível para inclusão no repositório como `demo/logiops-ai-demo.mp4`. O GitHub permite oferecer o arquivo para visualização ou download por um link no README depois do envio.
 
 ## Arquitetura
 
